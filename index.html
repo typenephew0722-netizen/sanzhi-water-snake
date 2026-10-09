@@ -1,0 +1,1561 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>三芝水蛇田</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap">
+<style>
+/* ── 色彩系統 ── */
+:root {
+  --bg: #fdf9f1;
+  --bg2: #f2e9d4;
+  --surface: #fffef8;
+  --border: #d8cdb2;
+  --fg: #2a2215;
+  --fg2: #5c5240;
+  --accent: #4a8040;
+  --accent2: #3a6832;
+  --accent-light: #edf4e5;
+  --water: #4a8fa8;
+  --water-light: #e5f2f6;
+  --warm: #c07a12;
+  --warm-light: #fef3dc;
+  --danger: #c0392b;
+  --radius: 12px;
+  --shadow: 0 2px 12px rgba(42,34,21,0.10);
+  --shadow-lg: 0 6px 32px rgba(42,34,21,0.14);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1a14;
+    --bg2: #252018;
+    --surface: #2e2a1e;
+    --border: #40392c;
+    --fg: #ede5d4;
+    --fg2: #a89878;
+    --accent: #5aaa68;
+    --accent2: #4a9257;
+    --accent-light: #1e3322;
+    --water: #5ba8c4;
+    --water-light: #1a2e38;
+    --warm: #d4952a;
+    --warm-light: #2e2210;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1a14; --bg2: #252018; --surface: #2e2a1e; --border: #40392c;
+  --fg: #ede5d4; --fg2: #a89878; --accent: #5aaa68; --accent2: #4a9257;
+  --accent-light: #1e3322; --water: #5ba8c4; --water-light: #1a2e38;
+  --warm: #d4952a; --warm-light: #2e2210; color-scheme: dark;
+}
+
+/* ── 重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: 'Noto Sans TC', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.7;
+  padding-inline: 0;
+  padding-block: 0;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 共用 ── */
+.container { max-width: 760px; margin: 0 auto; padding-inline: 20px; }
+.section { padding-block: 64px; }
+.section-alt { background: var(--bg2); }
+.serif { font-family: 'Noto Serif TC', serif; }
+.label {
+  font-size: .75rem; font-weight: 500; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--fg2);
+}
+.chip {
+  display: inline-block; padding: 4px 14px; border-radius: 999px;
+  background: var(--accent-light); color: var(--accent2);
+  font-size: .8rem; font-weight: 500;
+}
+
+/* ── 英雄區 ── */
+.hero {
+  min-height: 100svh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  background: linear-gradient(160deg, #1b2e1e 0%, #2c4a30 45%, #1a3540 100%);
+  color: #e8f5e4;
+  padding: 60px 24px env(safe-area-inset-bottom, 0px);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 60%, rgba(74,143,168,.25) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 30%, rgba(58,125,68,.20) 0%, transparent 55%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 680px; }
+.hero-eyebrow {
+  font-size: .8rem; letter-spacing: .15em; font-weight: 500;
+  color: rgba(232,245,228,.65); margin-bottom: 20px;
+}
+.hero-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  font-weight: 700; line-height: 1.25;
+  color: #e8f5e4; margin-bottom: 20px;
+}
+.hero-title em {
+  font-style: normal; color: #7dd68a;
+  display: block; font-size: clamp(1.3rem, 4vw, 2.1rem);
+  font-weight: 400; margin-top: 10px;
+}
+.hero-sub {
+  font-size: 1rem; color: rgba(232,245,228,.75);
+  max-width: 480px; margin: 0 auto 40px;
+}
+.hero-paths {
+  display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+}
+.hero-btn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 28px; border-radius: 999px;
+  font-size: 1rem; font-weight: 500; cursor: pointer;
+  border: none; text-decoration: none; transition: transform .15s, box-shadow .15s;
+  font-family: inherit;
+}
+.hero-btn:hover { transform: translateY(-2px); text-decoration: none; }
+.hero-btn-primary {
+  background: #7dd68a; color: #102015;
+  box-shadow: 0 4px 20px rgba(125,214,138,.35);
+}
+.hero-btn-primary:hover { box-shadow: 0 6px 28px rgba(125,214,138,.5); }
+.hero-btn-secondary {
+  background: rgba(255,255,255,.12); color: #e8f5e4;
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+.hero-btn-secondary:hover { background: rgba(255,255,255,.2); }
+.hero-scroll {
+  position: absolute; bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+  left: 50%; transform: translateX(-50%);
+  color: rgba(232,245,228,.4); font-size: .75rem; letter-spacing: .1em;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.scroll-arrow {
+  width: 20px; height: 20px; border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg); animation: bounce 1.6s ease-in-out infinite;
+}
+@keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(4px)} }
+
+/* ── 區塊標題 ── */
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700;
+  color: var(--fg); margin-top: 10px; text-wrap: balance;
+}
+.section-header p { color: var(--fg2); margin-top: 12px; max-width: 520px; margin-inline: auto; }
+
+/* ── Q&A ── */
+.qa-section { scroll-margin-top: 80px; }
+.qa-intro {
+  background: var(--accent-light); border-radius: var(--radius);
+  padding: 24px 28px; margin-bottom: 40px;
+  border-left: 4px solid var(--accent);
+}
+.qa-intro p { color: var(--fg); font-size: .95rem; }
+.qa-list { display: flex; flex-direction: column; gap: 16px; }
+.qa-item {
+  background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+  overflow: hidden;
+}
+.qa-question {
+  display: flex; align-items: center; gap: 14px;
+  padding: 20px 24px; cursor: pointer;
+  font-size: 1rem; font-weight: 500; color: var(--fg);
+  background: none; border: none; text-align: left; width: 100%; font-family: inherit;
+}
+.qa-question:hover { background: var(--bg2); }
+.qa-num {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; font-weight: 700;
+}
+.qa-chevron {
+  margin-left: auto; flex-shrink: 0; color: var(--fg2);
+  transition: transform .25s;
+}
+.qa-item.open .qa-chevron { transform: rotate(180deg); }
+.qa-answer {
+  display: none; padding: 0 24px 24px 66px;
+  color: var(--fg2); font-size: .95rem; line-height: 1.8;
+}
+.qa-item.open .qa-answer { display: block; }
+.qa-answer strong { color: var(--fg); }
+.qa-answer .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.qa-answer .tag {
+  display: inline-block; padding: 3px 12px; border-radius: 999px;
+  background: var(--water-light); color: var(--water); font-size: .82rem;
+}
+.qa-answer .highlight-box {
+  background: var(--warm-light); border-radius: 8px; padding: 14px 18px;
+  border-left: 3px solid var(--warm); margin-top: 14px; color: var(--fg);
+}
+
+/* ── 故事區 ── */
+.story-content {
+  background: var(--surface); border-radius: var(--radius);
+  padding: 36px 40px; box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  font-size: 1rem; line-height: 1.9; color: var(--fg2);
+}
+.story-content p { margin-bottom: 1.4em; }
+.story-content p:last-child { margin-bottom: 0; }
+.story-content strong { color: var(--fg); }
+.story-content .call-to-action {
+  margin-top: 28px; padding: 20px 24px;
+  background: var(--accent-light); border-radius: 8px;
+  text-align: center; font-size: 1.05rem; color: var(--accent2); font-weight: 600;
+}
+@media (max-width: 500px) {
+  .story-content { padding: 24px 20px; }
+}
+
+/* ── 貢獻單位 ── */
+.orgs-grid { display: flex; flex-direction: column; gap: 24px; }
+.org-card {
+  background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+  padding: 28px 32px;
+}
+.org-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 14px; }
+.org-icon {
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 10px;
+  background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+}
+.org-meta h3 { font-size: 1.05rem; font-weight: 700; color: var(--fg); }
+.org-meta .year { font-size: .8rem; color: var(--fg2); margin-top: 2px; }
+.org-body { color: var(--fg2); font-size: .95rem; line-height: 1.8; }
+@media (max-width: 500px) {
+  .org-card { padding: 20px; }
+}
+
+/* ── 相關報導 ── */
+.articles-list { display: flex; flex-direction: column; gap: 16px; }
+.article-card {
+  background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+  padding: 22px 28px; display: flex; gap: 20px; align-items: flex-start;
+}
+.article-num {
+  flex-shrink: 0; font-family: 'Noto Serif TC', serif;
+  font-size: 1.5rem; font-weight: 700; color: var(--border); line-height: 1;
+  padding-top: 2px;
+}
+.article-body h3 { font-size: .95rem; font-weight: 600; color: var(--fg); line-height: 1.5; }
+.article-body .meta { font-size: .8rem; color: var(--fg2); margin: 4px 0 8px; }
+.article-body p { font-size: .88rem; color: var(--fg2); line-height: 1.7; }
+.article-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: .82rem; margin-top: 8px; color: var(--accent);
+}
+@media (max-width: 480px) {
+  .article-card { padding: 18px 20px; }
+  .article-num { font-size: 1.2rem; }
+}
+
+/* ── 訂購表單 ── */
+.order-section { scroll-margin-top: 80px; }
+.order-card {
+  background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+  padding: 40px;
+}
+.products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+@media (max-width: 480px) { .products-grid { grid-template-columns: 1fr; } }
+.product-box {
+  border: 2px solid var(--border); border-radius: 10px;
+  padding: 18px; cursor: pointer; transition: border-color .2s, background .2s;
+  display: flex; align-items: center; gap: 14px; position: relative;
+}
+.product-box:hover { border-color: var(--accent); background: var(--accent-light); }
+.product-box.selected { border-color: var(--accent); background: var(--accent-light); }
+.product-radio { position: absolute; opacity: 0; width: 0; height: 0; }
+.prod-dot {
+  flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+  border: 2px solid var(--border); background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s;
+}
+.product-box.selected .prod-dot {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+.product-box.selected .prod-dot::after {
+  content: ''; width: 7px; height: 7px; border-radius: 50%; background: #fff;
+}
+.prod-info h4 { font-size: .92rem; font-weight: 600; color: var(--fg); }
+.prod-info .price { font-size: .82rem; color: var(--fg2); }
+
+.form-section-title {
+  font-size: .75rem; font-weight: 600; letter-spacing: .1em;
+  color: var(--accent2); text-transform: uppercase;
+  margin-bottom: 14px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: .9rem; font-weight: 500; color: var(--fg); margin-bottom: 6px; }
+.form-group label .req { color: var(--danger); margin-left: 2px; }
+.form-control {
+  width: 100%; padding: 11px 14px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg);
+  color: var(--fg); font-size: 1rem; font-family: inherit;
+  transition: border-color .2s;
+}
+.form-control:focus { outline: none; border-color: var(--accent); }
+select.form-control { cursor: pointer; }
+.qty-row { display: flex; align-items: center; gap: 12px; }
+.qty-btn {
+  width: 38px; height: 38px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--bg2); color: var(--fg); font-size: 1.2rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-family: inherit;
+  transition: background .15s;
+}
+.qty-btn:hover { background: var(--accent-light); border-color: var(--accent); }
+.qty-display {
+  min-width: 48px; text-align: center; font-size: 1.1rem;
+  font-weight: 600; color: var(--fg);
+}
+.qty-note { font-size: .8rem; color: var(--fg2); margin-top: 6px; }
+
+.shipping-options { display: flex; flex-direction: column; gap: 10px; }
+.shipping-option {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px; border-radius: 8px;
+  border: 2px solid var(--border); cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+.shipping-option:hover { border-color: var(--accent); }
+.shipping-option.selected { border-color: var(--accent); background: var(--accent-light); }
+.shipping-option input[type="radio"] { display: none; }
+.ship-radio-dot {
+  flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--border); margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s;
+}
+.shipping-option.selected .ship-radio-dot {
+  border-color: var(--accent); background: var(--accent);
+}
+.shipping-option.selected .ship-radio-dot::after {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff;
+}
+.ship-info strong { display: block; font-size: .9rem; color: var(--fg); }
+.ship-info span { font-size: .82rem; color: var(--fg2); }
+.ship-sub { font-size: .8rem; color: var(--fg2); margin-top: 4px; }
+
+.pickup-locations { display: none; margin-top: 12px; }
+.pickup-locations.visible { display: block; }
+.pickup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+@media (max-width: 420px) { .pickup-grid { grid-template-columns: 1fr; } }
+.pickup-option {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 12px; border-radius: 7px;
+  border: 1.5px solid var(--border); cursor: pointer; font-size: .85rem; color: var(--fg);
+  transition: border-color .2s, background .2s;
+}
+.pickup-option:hover { border-color: var(--accent); }
+.pickup-option.selected { border-color: var(--accent); background: var(--accent-light); }
+.pickup-option input[type="radio"] { display: none; }
+.pick-dot {
+  flex-shrink: 0; width: 14px; height: 14px; border-radius: 50%;
+  border: 1.5px solid var(--border);
+}
+.pickup-option.selected .pick-dot { border-color: var(--accent); background: var(--accent); }
+
+/* 金額摘要 */
+.price-summary {
+  background: var(--warm-light); border-radius: 10px; padding: 22px 24px;
+  margin: 28px 0; border: 1px solid rgba(200,134,26,.2);
+}
+.price-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 5px 0; font-size: .92rem; color: var(--fg2);
+}
+.price-row.total {
+  border-top: 1px solid var(--border); margin-top: 10px; padding-top: 14px;
+  font-size: 1.15rem; font-weight: 700; color: var(--fg);
+}
+.price-row.discount { color: var(--accent2); }
+.price-note { font-size: .8rem; color: var(--fg2); margin-top: 12px; line-height: 1.6; }
+
+.submit-btn {
+  width: 100%; padding: 16px; border-radius: 10px; border: none;
+  background: var(--accent); color: #fff;
+  font-size: 1.05rem; font-weight: 600; cursor: pointer;
+  font-family: inherit; transition: background .2s, transform .15s, box-shadow .2s;
+  box-shadow: 0 3px 16px rgba(58,125,68,.3);
+}
+.submit-btn:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 5px 22px rgba(58,125,68,.4); }
+.submit-btn:disabled { background: var(--border); box-shadow: none; cursor: not-allowed; transform: none; }
+.form-footer { font-size: .8rem; color: var(--fg2); text-align: center; margin-top: 14px; }
+
+/* 成功畫面 */
+.order-success {
+  display: none; text-align: center; padding: 60px 20px;
+}
+.order-success.visible { display: block; }
+.success-icon { font-size: 4rem; margin-bottom: 16px; }
+.order-success h3 {
+  font-family: 'Noto Serif TC', serif; font-size: 1.5rem;
+  color: var(--accent2); margin-bottom: 12px;
+}
+.order-success p { color: var(--fg2); }
+
+/* ── 聯絡 ── */
+.contact-card {
+  background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+  padding: 40px; max-width: 560px; margin: 0 auto;
+}
+@media (max-width: 500px) { .contact-card { padding: 24px 20px; } }
+.contact-form-submit {
+  width: 100%; padding: 14px; border-radius: 8px; border: none;
+  background: var(--accent); color: #fff; font-size: 1rem;
+  font-weight: 600; cursor: pointer; font-family: inherit; margin-top: 8px;
+  transition: background .2s;
+}
+.contact-form-submit:hover { background: var(--accent2); }
+
+/* ── Footer ── */
+footer {
+  background: #15201a; color: rgba(232,245,228,.55);
+  text-align: center; padding: 32px 24px;
+  font-size: .82rem; line-height: 1.8;
+}
+footer a { color: rgba(125,214,138,.7); }
+footer strong { color: rgba(232,245,228,.8); }
+
+/* ── 導覽 ── */
+nav {
+  position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0;
+  z-index: 100; background: rgba(27,46,30,.88); backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding: 0 24px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Noto Serif TC', serif; font-weight: 700;
+  color: #7dd68a; font-size: .95rem; text-decoration: none;
+}
+.nav-links { display: flex; gap: 4px; }
+.nav-link {
+  padding: 6px 12px; border-radius: 6px; font-size: .82rem;
+  color: rgba(232,245,228,.7); background: none; border: none;
+  cursor: pointer; font-family: inherit; transition: background .15s, color .15s;
+}
+.nav-link:hover { background: rgba(255,255,255,.1); color: #e8f5e4; }
+.nav-link.highlight {
+  background: rgba(125,214,138,.18); color: #7dd68a;
+}
+@media (max-width: 420px) {
+  .nav-link { padding: 6px 8px; font-size: .78rem; }
+}
+
+/* ── 最新消息 ── */
+.news-list { display: flex; flex-direction: column; gap: 16px; }
+.news-item {
+  background: var(--surface); border-radius: var(--radius);
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+  padding: 22px 28px;
+}
+.news-item .date { font-size: .78rem; color: var(--fg2); margin-bottom: 6px; }
+.news-item h3 { font-size: 1rem; font-weight: 600; color: var(--fg); margin-bottom: 8px; }
+.news-item p { font-size: .92rem; color: var(--fg2); line-height: 1.75; }
+.news-tag { display: inline-block; background: var(--water-light); color: var(--water); padding: 2px 10px; border-radius: 999px; font-size: .75rem; margin-right: 8px; margin-bottom: 6px; }
+
+/* ── 通知 ── */
+.toast {
+  position: fixed; bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+  left: 50%; transform: translateX(-50%) translateY(80px);
+  background: #1b2e1e; color: #7dd68a;
+  padding: 12px 24px; border-radius: 999px;
+  font-size: .9rem; font-weight: 500;
+  box-shadow: 0 4px 24px rgba(0,0,0,.3);
+  transition: transform .3s; z-index: 999; white-space: nowrap;
+}
+.toast.visible { transform: translateX(-50%) translateY(0); }
+
+/* ── 動畫 ── */
+.fade-in { opacity: 0; transform: translateY(16px); transition: opacity .5s, transform .5s; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* ── 相片集 ── */
+.gallery-section { background: var(--bg2); }
+.gallery-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.gf-btn {
+  padding: 6px 16px; border-radius: 99px; border: 1.5px solid var(--border);
+  background: var(--surface); color: var(--fg2); font-size: .85rem; cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.gf-btn:hover { border-color: var(--accent); color: var(--accent); }
+.gf-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.gitem {
+  position: relative; border-radius: 10px; overflow: hidden;
+  aspect-ratio: 4/3; cursor: pointer; background: var(--bg2);
+  box-shadow: var(--shadow);
+}
+.gitem img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .4s; display: block;
+}
+.gitem:hover img { transform: scale(1.06); }
+.gcap {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 6px 10px; background: rgba(0,0,0,.52); color: #fff;
+  font-size: .78rem; text-align: center;
+  opacity: 0; transition: opacity .25s;
+}
+.gitem:hover .gcap { opacity: 1; }
+.gitem.hidden { display: none; }
+
+/* ── 燈箱 ── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,.88);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 12px;
+}
+.lb-img { max-width: 90vw; max-height: 80vh; border-radius: 8px; object-fit: contain; }
+.lb-cap { color: #e8e3d8; font-size: .9rem; margin: 0; }
+.lb-close, .lb-prev, .lb-next {
+  position: fixed; background: rgba(255,255,255,.15); border: none;
+  color: #fff; font-size: 1.6rem; cursor: pointer; border-radius: 50%;
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.lb-close:hover, .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,.3); }
+.lb-close { top: 20px; right: 20px; font-size: 1.2rem; }
+.lb-prev  { left: 16px;  top: 50%; transform: translateY(-50%); }
+.lb-next  { right: 16px; top: 50%; transform: translateY(-50%); }
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .lb-prev { left: 6px; }
+  .lb-next { right: 6px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 導覽列 -->
+<nav>
+  <a class="nav-brand" href="#hero">三芝水蛇田</a>
+  <div class="nav-links">
+    <button class="nav-link" onclick="scrollToSection('learn')">了解水蛇田</button>
+    <button class="nav-link highlight" onclick="scrollToSection('order')">購買農產品</button>
+  </div>
+</nav>
+
+<!-- 英雄區 -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">新北市三芝・百年石砌水梯田</p>
+    <h1 class="hero-title serif">
+      守護水蛇的家
+      <em>在三芝，人與自然共耕一片田</em>
+    </h1>
+    <p class="hero-sub">
+      一片百年石砌水梯田，以友善耕作守護唐水蛇棲地。
+      購買這裡的農產品，就是守護這片土地。
+    </p>
+    <div class="hero-paths">
+      <button class="hero-btn hero-btn-primary" onclick="scrollToSection('learn')">
+        🌿 了解水蛇田的故事
+      </button>
+      <button class="hero-btn hero-btn-secondary" onclick="scrollToSection('order')">
+        🛒 直接購買農產品
+      </button>
+    </div>
+  </div>
+  <!-- 插畫背景裝飾 -->
+  <img src="/_blob/d6e8a295f798ff1bc87ae209dbc4e75f" alt="" aria-hidden="true"
+    style="position:absolute;bottom:-40px;right:-40px;width:clamp(280px,50vw,560px);
+    opacity:.38;pointer-events:none;user-select:none;
+    filter:drop-shadow(0 0 40px rgba(125,214,138,.2));z-index:0;">
+  <div class="hero-scroll">
+    <span>往下滾動</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ══════════════ 了解水蛇田 ══════════════ -->
+<div id="learn">
+
+<!-- Q&A -->
+<section class="section qa-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">了解水蛇田</span>
+      <h2 class="serif">你可能想知道的事</h2>
+      <p>點擊問題展開解答</p>
+    </div>
+
+    <div class="qa-intro fade-in">
+      <p>這片藏在三芝山區的水梯田，有許多值得認識的故事。以下整理最常被問到的問題。</p>
+    </div>
+
+    <div class="qa-list">
+
+      <div class="qa-item fade-in">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-num">1</span>
+          <span>為什麼叫「水蛇田」？</span>
+          <svg class="qa-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="qa-answer">
+          <p>這片水梯田棲息著珍貴的<strong>唐水蛇（Chinese water snake）</strong>與<strong>韋氏水蛇（Wagner's water snake）</strong>，兩者都是高度依賴靜水域的水棲性蛇類。根據 2022–2026 年的長期生態調查，這裡是<strong>全臺灣已知單位面積族群密度最高的唐水蛇棲地</strong>，因此被暱稱為「水蛇田」。</p>
+          <p>2024 年，《臺灣陸域爬行類紅皮書名錄》已將唐水蛇列為<strong>國家極危（NCR）</strong>、韋氏水蛇列為<strong>國家瀕危（NEN）</strong>，這片田是目前已知對牠們極為重要的棲地之一。</p>
+        </div>
+      </div>
+
+      <div class="qa-item fade-in">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-num">2</span>
+          <span>這裡的水蛇有多少隻？可以去看嗎？</span>
+          <svg class="qa-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="qa-answer">
+          <p>根據長期生態調查，這片田區的唐水蛇族群密度在全臺已知棲地中是最高的，族群狀況相對穩定——這也是友善耕作長期堅持的成果。</p>
+          <p>出於對棲地的保護，我們<strong>不公開確切數量資訊，也不開放一般民眾自行進入田區</strong>。若有環境教育合作意願，歡迎透過頁面底部的聯絡表單聯繫我們。</p>
+          <p>這裡的農地屬於<strong>私人土地</strong>，未經允許請勿擅自進入。水梯田長年維護的<strong>田埂</strong>結構脆弱，一旦遭到踩踏便可能崩塌，不僅破壞生物棲息環境，也會影響農事耕作的進行，請務必尊重。</p>
+          <div class="highlight-box">
+            🐍 水蛇對棲地環境的穩定性相當敏感，任何干擾都可能影響其正常活動。請一起用「購買友善農產品」的方式守護牠們，而非直接探訪。
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item fade-in">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-num">3</span>
+          <span>這片田的農產品有哪些？怎麼跟水蛇保育有關？</span>
+          <svg class="qa-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="qa-answer">
+          <p>目前田區生產兩種農產品：</p>
+          <div class="tag-row">
+            <span class="tag">🌾 水蛇米（日曬三芝水蛇米）</span>
+            <span class="tag">🌿 水蛇腰‧美人腿茭白筍</span>
+          </div>
+          <p style="margin-top:14px">這兩種農產品都採<strong>無農藥、無化肥、無除草劑</strong>的友善方式栽種，並全年保持田間有水（湛水）。水田有水，水蛇就有家；消費者購買農產品，就是直接支持農戶持續友善耕作，讓田區不因成本壓力而廢耕。</p>
+          <p>田區已取得<strong>慈心「綠色保育標章」</strong>認證（2022 年），是以保育唐水蛇棲地為核心目標所獲得的農業認證。</p>
+        </div>
+      </div>
+
+      <div class="qa-item fade-in">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-num">4</span>
+          <span>這片田還有哪些生物？</span>
+          <svg class="qa-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="qa-answer">
+          <p>這片田區是整個微型生態系的縮影。截至目前記錄到：</p>
+          <div class="tag-row">
+            <span class="tag">🐸 6 科 17 種蛙類</span>
+            <span class="tag">🦎 4 科 12 種爬行類</span>
+          </div>
+          <p style="margin-top:14px">包括保育類的<strong>台北樹蛙、黑眉錦蛇</strong>，以及紅皮書受脅物種<strong>長腳赤蛙、柴棺龜</strong>、大龍蝨等，生物多樣性極高。水蛇在這個生態系中扮演了「傘護種」的角色——守護好水蛇的棲地，等於同時照顧了整個共域群落。</p>
+        </div>
+      </div>
+
+      <div class="qa-item fade-in">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-num">5</span>
+          <span>目前誰在維護這片田？面臨什麼困難？</span>
+          <svg class="qa-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="qa-answer">
+          <p>田區由現年 85 歲的<strong>張阿伯</strong>與其子<strong>張大哥</strong>共同維護。因地處偏遠山區，無法機械化耕作，整地、翻土、修補田埂、育種、插秧、手工除草與收割，每一個步驟都仰賴最傳統的人力。每粒米、每支茭白筍，都是汗水與堅持的結晶。</p>
+          <p>友善耕作的成本遠高於慣行農法，加上農村人力老化，田區正面臨<strong>廢耕的威脅</strong>。一旦廢耕、田間無水，整個依賴靜水域的珍稀生物群落也將隨之消失。</p>
+          <div class="highlight-box">
+            🌾 購買友善農產品，是目前最直接、最有效的棲地守護方式。
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item fade-in">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-num">6</span>
+          <span>有哪些單位參與這片田的保育？</span>
+          <svg class="qa-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="qa-answer">
+          <p>多個組織長期陪伴這片田：</p>
+          <div class="tag-row">
+            <span class="tag">林業及自然保育署（前羅東林管處）</span>
+            <span class="tag">人禾環境倫理發展基金會</span>
+            <span class="tag">鷗美（企業夥伴）</span>
+            <span class="tag">新南田董米</span>
+          </div>
+          <p style="margin-top:14px">自 2017 年起，各單位協助生態調查、輔導友善耕作轉型、提供棲地認養與農產認購支持，讓這片田得以長期存續。詳細介紹請見下方「貢獻單位」區。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 相片集 -->
+<section class="section gallery-section" id="gallery">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">田間影像</span>
+      <h2 class="serif">照片集</h2>
+    </div>
+    <div class="gallery-grid fade-in" id="galleryGrid">
+      <!-- 生態 -->
+      <div class="gitem"><img src="/_blob/b30f4fc9be8abd32e8e31a01ff56b669" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/d25ce505a8a24b1b3d19a7e8a3fd5557" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/233758ac7ecbf63450cac586a65bc705" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/7a1f5f3e08f292002c90e8ce37ef0b1d" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/4ca37e5bca4bf8bffb94f34fd5fd851f" alt="" loading="lazy"></div>
+      <!-- 田間風光 -->
+      <div class="gitem"><img src="/_blob/9799101040aff795b031d7490071a224" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/315e8e448c99b93983380ebbbf812059" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/35fcd0b83e1bae6919e08f595f28b483" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/438d471622c89648b2e3417eddd6ed42" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/2386764e08d56bfe7bf36f08ff0c00fe" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/bdabefef91402ee5fbb9525da5c0a668" alt="" loading="lazy"></div>
+      <!-- 農事 -->
+      <div class="gitem"><img src="/_blob/f94828f22fd9282af610424923d7e73e" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/cbdb3aa3a0e629648b642a8216a27bb3" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/4a27f5448751ac444249cffa54a583ad" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/f780a954a3e0ddff67cba8b05ba5755e" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/59fe2f9b54f64b8c3be0e065d062fc1c" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/c73e8bfa0d51f5d9ef765888cada2e25" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/849bde4cf077a24a90b34c60249ee9ce" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/fb2840398a30de9ab9a0bd8e25162092" alt="" loading="lazy"></div>
+      <!-- 農產品 -->
+      <div class="gitem"><img src="/_blob/1795a59da295a06938705a62699864a2" alt="" loading="lazy"></div>
+      <div class="gitem"><img src="/_blob/b7ab6559d45bcd8aa12cf8977bd83b05" alt="" loading="lazy"></div>
+    </div>
+  </div>
+  <!-- 燈箱 -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-close" id="lbClose" aria-label="關閉">✕</button>
+    <button class="lb-prev" id="lbPrev" aria-label="上一張">‹</button>
+    <button class="lb-next" id="lbNext" aria-label="下一張">›</button>
+    <img class="lb-img" id="lbImg" src="" alt="">
+    <p class="lb-cap" id="lbCap"></p>
+  </div>
+</section>
+
+<!-- 故事區 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">田區故事</span>
+      <h2 class="serif">百年水梯田的保育歷程</h2>
+    </div>
+    <div class="story-content fade-in">
+      <p>這片僅 6 分地的百年石砌水梯田，座落於新北市三芝區、海拔約 360–380 公尺的七星山系，緊鄰大屯溪，四周森林環繞，與世獨立。</p>
+      <p>田區的主人是現年 85 歲的張阿伯，與其子張大哥共同維護著這片土地。因地處偏遠山區，無法機械化耕作，從整地、翻土、修補田埂，到育種、插秧、手工除草與收割，每一個步驟都仰賴最傳統的人力。每粒米、每支茭白筍，都是汗水與堅持的結晶。</p>
+      <p>2017 年，這片田區因生態圈引薦而被發現——田裡除草劑及農藥使用控管得當，生物多樣性極高，更棲息著為數不少、珍貴稀有的<strong>唐水蛇</strong>。在羅東林區管理處（林業保育署前身）與人禾環境倫理發展基金會的協助下，張阿伯自 2018 年起完全轉型為無農藥、無化肥、無除草劑的友善耕作，並全年保持湛水，為水蛇及共域的柴棺龜、長腳赤蛙、大龍蝨等生物，營造穩定的棲地環境。</p>
+      <p>這份堅持也獲得肯定：2022 年，水梯田以保育唐水蛇之成果，取得慈心「綠色保育標章」認證。根據 2022–2026 年的長期生態調查，這片田區是<strong>全臺灣已知單位面積族群密度最高的唐水蛇棲地</strong>。截至目前，田區已記錄到 6 科 17 種蛙類、4 科 12 種爬行類，包括台北樹蛙、黑眉錦蛇等保育類，以及長腳赤蛙、柴棺龜等紅皮書受脅物種。</p>
+      <p>然而，2024 年《臺灣陸域爬行類紅皮書名錄》已將唐水蛇列為<strong>國家極危（NCR）</strong>、韋氏水蛇列為<strong>國家瀕危（NEN）</strong>——這片田，是目前已知對牠們極為重要的棲地之一。但友善耕作的成本遠高於慣行農法，加上農村人力老化，張阿伯與張大哥獨自支撐的水梯田，正面臨廢耕的威脅。一旦田區廢耕、不再有水，這群依賴靜水域的珍稀生物，也將隨之消失。</p>
+      <div class="call-to-action">
+        支持這片田的友善農產，就是守護臺灣僅存的水蛇棲地。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 貢獻單位 -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">保育網絡</span>
+      <h2 class="serif">與我們一起守護水蛇田的夥伴</h2>
+    </div>
+    <div class="orgs-grid">
+
+      <div class="org-card fade-in">
+        <div class="org-header">
+          <div class="org-icon">🌾</div>
+          <div class="org-meta">
+            <h3>新南田董米</h3>
+            <div class="year">合作起始：2017 年</div>
+          </div>
+        </div>
+        <div class="org-body">新南田董米是最早與張阿伯接觸的推動者。透過實際協助農事耕作，以及每年持續的茭白筍團購行動，打動了張阿伯願意投入友善耕作轉型，奠定了後續所有合作的基礎。「水蛇腰．美人腿」品牌由此誕生，每一年的茭白筍銷售工作至今仍由新南田董米負責。此外，透過自身稻米種植與碾米經驗，推出「日曬三芝水蛇米」，讓更多消費者得以用購買的方式，實際參與守護這片棲地。</div>
+      </div>
+
+      <div class="org-card fade-in">
+        <div class="org-header">
+          <div class="org-icon">🏢</div>
+          <div class="org-meta">
+            <h3>鷗美有限公司（企業夥伴）</h3>
+            <div class="year">認購起始：2017 年｜棲地認養計畫：2023 年</div>
+          </div>
+        </div>
+        <div class="org-body">鷗美是 2017 年第一批響應茭白筍團購的企業，七年來始終默默付出，從不以此為公司形象宣傳，純粹是因為認同生態保育的價值。2023 年正式啟動「棲地認養計畫」，採保價收購制度全額認購農產，並提供資助金協助農民聘僱專業農務人力——讓張阿伯不必擔心豐收與否都有穩定收入，得以安心維持友善耕作，無後顧之憂。鷗美的長期陪伴，是這片田得以延續最重要的後盾之一。</div>
+      </div>
+
+      <div class="org-card fade-in">
+        <div class="org-header">
+          <div class="org-icon">🌲</div>
+          <div class="org-meta">
+            <h3>林業及自然保育署（前羅東林管處）</h3>
+            <div class="year">合作起始：2017 年</div>
+          </div>
+        </div>
+        <div class="org-body">透過「國土生態保育綠色網絡計畫」，將三芝三板橋列為保育熱點之一，協助盤點田區生態現況，並自 2019 年起針對唐水蛇等半水棲性蛇類進行生殖與擴散途徑調查，作為棲地營造與廊道修復的研究基礎。</div>
+      </div>
+
+      <div class="org-card fade-in">
+        <div class="org-header">
+          <div class="org-icon">🔬</div>
+          <div class="org-meta">
+            <h3>人禾環境倫理發展基金會</h3>
+            <div class="year">合作起始：2017 年</div>
+          </div>
+        </div>
+        <div class="org-body">協助田區生態調查與基線資料建立，輔導張阿伯轉型為以保育水蛇棲地為目標的友善耕作，並透過與學校、企業的環境教育課程，推廣三芝水蛇田的友善耕作方式，讓更多人認識這片棲地的保育價值。2022 年，協助田區申請取得慈心「綠色保育標章」認證，肯定農戶長期對野生動物棲地的維護與付出。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 相關報導 -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">媒體與報導</span>
+      <h2 class="serif">相關報導</h2>
+    </div>
+    <div class="articles-list">
+
+      <div class="article-card fade-in">
+        <div class="article-num">01</div>
+        <div class="article-body">
+          <h3>「水蛇腰．美人腿」茭白筍田裡的唐水蛇</h3>
+          <p class="meta">人禾環境倫理發展基金會｜2019/10/31</p>
+          <p>保育合作緣起的完整故事，從 2017 年發現田區到第一代「水蛇腰．美人腿」茭白筍問世。</p>
+          <a class="article-link" href="https://eeft.org.tw/20191031-1/" target="_blank" rel="noopener">閱讀全文 →</a>
+        </div>
+      </div>
+
+      <div class="article-card fade-in">
+        <div class="article-num">02</div>
+        <div class="article-body">
+          <h3>「水蛇腰．美人腿」茭白筍之美人腿的誘惑</h3>
+          <p class="meta">人禾環境倫理發展基金會｜2020/10/15</p>
+          <p>說明友善農耕的實際做法與挑戰，以及唐水蛇作為「庇護傘物種」的意義。</p>
+          <a class="article-link" href="https://eeft.org.tw/20201015-3/" target="_blank" rel="noopener">閱讀全文 →</a>
+        </div>
+      </div>
+
+      <div class="article-card fade-in">
+        <div class="article-num">03</div>
+        <div class="article-body">
+          <h3>國土綠網起步 以生態農業打造生產地景是關鍵</h3>
+          <p class="meta">環境資訊中心</p>
+          <p>將三芝三板橋列為國土生態綠網三大示範點位之一。</p>
+          <a class="article-link" href="https://e-info.org.tw/node/213516" target="_blank" rel="noopener">閱讀全文 →</a>
+        </div>
+      </div>
+
+      <div class="article-card fade-in">
+        <div class="article-num">04</div>
+        <div class="article-body">
+          <h3>唐水蛇與綠色農事的美好見證——三芝「水蛇腰美人腿」獲「綠色保育標章」認證</h3>
+          <p class="meta">林務局／羅東林管處</p>
+          <p>官方說明田區生態條件與取得綠色保育標章認證的過程。</p>
+          <a class="article-link" href="https://www.forest.gov.tw/0000014/0069145" target="_blank" rel="noopener">閱讀全文 →</a>
+        </div>
+      </div>
+
+      <div class="article-card fade-in">
+        <div class="article-num">05</div>
+        <div class="article-body">
+          <h3>農地裡有蛇！綠色保育更有力</h3>
+          <p class="meta">中華日報</p>
+          <p>主流媒體對田區取得綠色保育標章的報導。</p>
+          <a class="article-link" href="https://www.cdns.com.tw/articles/551138" target="_blank" rel="noopener">閱讀全文 →</a>
+        </div>
+      </div>
+
+      <div class="article-card fade-in">
+        <div class="article-num">06</div>
+        <div class="article-body">
+          <h3>田董開外掛——保護水蛇的三芝水梯田</h3>
+          <p class="meta">新南田董米</p>
+          <p>說明保育合作如何延伸出「日曬三芝水蛇米」產品。</p>
+          <a class="article-link" href="https://www.tiandongrice.com.tw/article_detail/13/" target="_blank" rel="noopener">閱讀全文 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 最新消息 -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">最新消息</span>
+      <h2 class="serif">農產資訊與田區動態</h2>
+    </div>
+    <div class="news-list">
+
+      <div class="news-item fade-in">
+        <div>
+          <span class="news-tag">產季公告</span>
+          <span class="news-tag">茭白筍</span>
+        </div>
+        <div class="date">2026 年 10 月</div>
+        <h3>🌿【2026 茭白筍】第一批採收囉！</h3>
+        <img src="/_blob/f61a9bfc47b65dbb70db7ccb432c5d56" alt="水蛇腰美人腿茭白筍" loading="lazy" style="width:100%;max-width:480px;border-radius:10px;margin:12px 0;display:block;">
+        <p>今年茭白筍在 10 月初就順利採收到第一批。<strong>預計自 10 月 12 日起開始配送</strong>，並預計採收至 11 月底。如需訂購，歡迎至下方訂購區填寫表單，我們將盡快確認出貨時間。</p>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:36px;" class="fade-in">
+      <button class="hero-btn hero-btn-primary" style="margin:0 auto;background:var(--accent);color:#fff;box-shadow:0 4px 20px rgba(58,125,68,.3);" onclick="scrollToSection('order')">
+        🛒 前往訂購茭白筍／水蛇米
+      </button>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- /learn -->
+
+<!-- ══════════════ 訂購表單 ══════════════ -->
+<section class="section section-alt order-section" id="order">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">購買農產品</span>
+      <h2 class="serif">直接支持友善耕作</h2>
+      <p>購買這片田的農產品，就是守護水蛇棲地最直接的方式</p>
+    </div>
+
+    <div class="order-card fade-in">
+      <div id="order-form-wrap">
+
+        <!-- LINE 提示 -->
+        <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:16px 18px;margin-bottom:28px;display:flex;align-items:flex-start;gap:12px;">
+          <span style="font-size:1.4rem;line-height:1;">💬</span>
+          <div>
+            <div style="font-weight:700;color:var(--accent2);margin-bottom:4px;">訂購前請先加入田董米 LINE</div>
+            <div style="font-size:.88rem;color:var(--fg2);line-height:1.6;">出貨通知、確認細節均透過 LINE 進行，<strong>未加入 LINE 者恕無法處理訂單</strong>。</div>
+            <div style="margin-top:8px;font-size:.9rem;font-weight:600;color:var(--fg);">LINE ID：<a href="https://line.me/R/ti/p/%40viw8495l" target="_blank" rel="noopener" style="color:var(--accent2);">@viw8495l</a></div>
+          </div>
+        </div>
+
+        <!-- 茭白筍（主要商品） -->
+        <div style="font-size:1rem;font-weight:700;color:var(--accent2);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);">🌿 水蛇腰‧美人腿茭白筍<span style="font-size:.75rem;font-weight:400;color:var(--accent);margin-left:8px;">必選</span></div>
+        <div style="background:var(--surface);border:1.5px solid var(--accent);border-radius:var(--radius);padding:16px 18px;margin-bottom:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+            <div>
+              <div style="font-weight:600;font-size:.95rem;">新鮮帶殼茭白筍・每包 1 台斤（600g，約 6～8 根）</div>
+              <div style="font-size:1.1rem;font-weight:700;color:var(--accent2);">NT$170／包 <span style="font-size:.82rem;font-weight:400;color:var(--warm);">3 包以上 NT$160／包</span></div>
+            </div>
+            <div class="qty-row">
+              <button class="qty-btn" type="button" onclick="changeBambooQty(-1)">－</button>
+              <div class="qty-display" id="bamboo-qty-display">1</div>
+              <button class="qty-btn" type="button" onclick="changeBambooQty(1)">＋</button>
+            </div>
+          </div>
+          <div style="font-size:.8rem;color:var(--fg2);">新鮮帶殼茭白筍，每包重量1斤=600g，約6～8根</div>
+        </div>
+
+        <!-- 水蛇米（加購） -->
+        <div style="font-size:1rem;font-weight:700;color:var(--accent2);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);">🌾 日曬三芝水蛇米<span style="font-size:.75rem;font-weight:400;color:var(--fg2);margin-left:8px;">選購（加購）</span></div>
+        <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:24px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+            <div>
+              <div style="font-weight:600;font-size:.95rem;">每包 3 台斤白米（真空包裝）</div>
+              <div style="font-size:1.1rem;font-weight:700;color:var(--fg);">NT$290／包 <span style="font-size:.82rem;font-weight:400;color:var(--fg2);text-decoration:line-through;">原價$300</span></div>
+            </div>
+            <div class="qty-row">
+              <button class="qty-btn" type="button" onclick="changeRiceQty(-1)">－</button>
+              <div class="qty-display" id="rice-qty-display">0</div>
+              <button class="qty-btn" type="button" onclick="changeRiceQty(1)">＋</button>
+            </div>
+          </div>
+          <div style="font-size:.8rem;color:var(--fg2);">購買茭白筍即可加購水蛇米，米數可為 0</div>
+        </div>
+
+        <!-- 配送方式 -->
+        <div class="form-group">
+          <div class="form-section-title">配送方式（擇一）</div>
+          <p style="font-size:.82rem;color:var(--fg2);margin-bottom:12px;">📦 包數計算為茭白筍＋水蛇米合計包數（冷藏宅配請依合計包數選擇對應方案）</p>
+          <div id="shipping-tier-hint" style="font-size:.82rem;color:var(--warm);margin-bottom:10px;display:none;"></div>
+          <div class="shipping-options" id="shipping-options">
+
+            <label class="shipping-option" id="ship-cold-s" onclick="selectShipping('cold-s')">
+              <input type="radio" name="shipping" value="cold-s">
+              <div class="ship-radio-dot"></div>
+              <div class="ship-info">
+                <strong>❄️ 冷藏宅配・1–10 包</strong>
+                <span>運費 NT$200，寄送到府（全台）</span>
+              </div>
+            </label>
+
+            <label class="shipping-option" id="ship-cold-m" onclick="selectShipping('cold-m')">
+              <input type="radio" name="shipping" value="cold-m">
+              <div class="ship-radio-dot"></div>
+              <div class="ship-info">
+                <strong>❄️ 冷藏宅配・11–19 包</strong>
+                <span>運費 NT$250，寄送到府（全台）</span>
+              </div>
+            </label>
+
+            <label class="shipping-option" id="ship-cold-f" onclick="selectShipping('cold-f')">
+              <input type="radio" name="shipping" value="cold-f">
+              <div class="ship-radio-dot"></div>
+              <div class="ship-info">
+                <strong>❄️ 冷藏宅配・20 包以上</strong>
+                <span>免運費，寄送到府（全台）</span>
+              </div>
+            </label>
+
+            <label class="shipping-option" id="ship-pickup-milun" onclick="selectShipping('pickup-milun')">
+              <input type="radio" name="shipping" value="pickup-milun">
+              <div class="ship-radio-dot"></div>
+              <div class="ship-info">
+                <strong>📍 定點面交・迴龍捷運站</strong>
+                <span>平日 9–12 點，免運費</span>
+              </div>
+            </label>
+
+            <label class="shipping-option" id="ship-pickup-banciao" onclick="selectShipping('pickup-banciao')">
+              <input type="radio" name="shipping" value="pickup-banciao">
+              <div class="ship-radio-dot"></div>
+              <div class="ship-info">
+                <strong>📍 定點面交・板橋四川蝦皮智取店</strong>
+                <span>新北市板橋區四川路二段119號1樓，免運費</span>
+              </div>
+            </label>
+
+            <label class="shipping-option" id="ship-pickup-yatung" onclick="selectShipping('pickup-yatung')">
+              <input type="radio" name="shipping" value="pickup-yatung">
+              <div class="ship-radio-dot"></div>
+              <div class="ship-info">
+                <strong>📍 定點面交・亞東醫院捷運站</strong>
+                <span>免運費</span>
+              </div>
+            </label>
+
+            <label class="shipping-option" id="ship-pickup-yilan" onclick="selectShipping('pickup-yilan')">
+              <input type="radio" name="shipping" value="pickup-yilan">
+              <div class="ship-radio-dot"></div>
+              <div class="ship-info">
+                <strong>📍 定點面交・宜蘭官老爺休閒農場</strong>
+                <span>免運費</span>
+              </div>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- 金額摘要 -->
+        <div class="price-summary" id="price-summary">
+          <div class="price-row">
+            <span>商品小計</span>
+            <span id="sum-product">—</span>
+          </div>
+          <div class="price-row" id="sum-bamboo-row">
+            <span>茭白筍 <span id="sum-bamboo-qty-label"></span></span>
+            <span id="sum-bamboo">—</span>
+          </div>
+          <div class="price-row" id="sum-rice-row" style="display:none">
+            <span>水蛇米 <span id="sum-rice-qty-label"></span></span>
+            <span id="sum-rice">—</span>
+          </div>
+          <div class="price-row discount" id="sum-discount-row" style="display:none">
+            <span id="sum-discount-label">多包優惠（3 包以上 NT$160／包）</span>
+            <span id="sum-discount">—</span>
+          </div>
+          <div class="price-row">
+            <span>運費</span>
+            <span id="sum-shipping">—</span>
+          </div>
+          <div class="price-row total">
+            <span>合計</span>
+            <span id="sum-total">—</span>
+          </div>
+          <p class="price-note">
+            ✦ 出貨通知與付款資訊均透過 <strong>LINE（<a href="https://line.me/R/ti/p/%40viw8495l" target="_blank" rel="noopener" style="color:var(--fg2);">@viw8495l</a>）</strong> 聯繫，請確認已加入。<br>
+            ✦ 農產品視農事進度出貨，採收後將以 LINE 確認出貨時間。
+          </p>
+        </div>
+
+        <!-- 匯款帳戶 -->
+        <div style="background:var(--warm-light);border:1.5px solid var(--warm);border-radius:var(--radius);padding:16px 18px;margin-bottom:24px;">
+          <div style="font-weight:700;color:var(--warm);margin-bottom:10px;font-size:.95rem;">💳 匯款帳戶</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:.9rem;color:var(--fg);">
+            <div style="display:flex;gap:12px;"><span style="color:var(--fg2);min-width:48px;">銀行</span><strong>700 中華郵政</strong></div>
+            <div style="display:flex;gap:12px;"><span style="color:var(--fg2);min-width:48px;">帳號</span><strong style="user-select:all;letter-spacing:.05em;">0001300-0808809</strong></div>
+            <div style="display:flex;gap:12px;"><span style="color:var(--fg2);min-width:48px;">戶名</span><strong>林哲安</strong></div>
+          </div>
+          <div style="font-size:.78rem;color:var(--fg2);margin-top:10px;">⚠️ 請於訂單確認後完成匯款，並將<strong>匯款後五碼</strong>填入下方欄位</div>
+        </div>
+
+        <!-- 購買人資訊 -->
+        <div class="form-section-title">購買人資訊</div>
+
+        <div class="form-group">
+          <label for="buyer-name">姓名<span class="req">*</span></label>
+          <input class="form-control" type="text" id="buyer-name" placeholder="您的姓名" required>
+        </div>
+
+        <div class="form-group">
+          <label for="buyer-phone">聯絡電話<span class="req">*</span></label>
+          <input class="form-control" type="tel" id="buyer-phone" placeholder="09xx-xxxxxx">
+        </div>
+
+        <div class="form-group">
+          <label for="buyer-email">電子信箱<span class="req">*</span></label>
+          <input class="form-control" type="email" id="buyer-email" placeholder="your@email.com" required>
+        </div>
+
+        <div class="form-group" id="address-group" style="display:none">
+          <label for="buyer-address">收件地址<span class="req">*</span></label>
+          <input class="form-control" type="text" id="buyer-address" placeholder="請填寫完整地址">
+        </div>
+
+        <div class="form-group">
+          <label for="buyer-transfer">匯款後五碼<span class="req">*</span></label>
+          <input class="form-control" type="text" id="buyer-transfer" placeholder="例：12345" maxlength="5" inputmode="numeric">
+        </div>
+
+        <div class="form-group">
+          <label for="buyer-note">備註（選填）</label>
+          <textarea class="form-control" id="buyer-note" rows="3" placeholder="任何想讓我們知道的事，例如希望的出貨時間等"></textarea>
+        </div>
+
+        <button class="submit-btn" id="submit-btn" type="button" onclick="submitOrder()">
+          確認送出訂單
+        </button>
+        <p class="form-footer">⚠️ 送出後請確認已加入 LINE <strong><a href="https://line.me/R/ti/p/%40viw8495l" target="_blank" rel="noopener" style="color:var(--fg2);">@viw8495l</a></strong>，我們將透過 LINE 確認訂單與安排出貨</p>
+
+      </div><!-- /order-form-wrap -->
+
+      <!-- 成功畫面 -->
+      <div class="order-success" id="order-success">
+        <div class="success-icon">🐍</div>
+        <h3>感謝您的訂購！</h3>
+        <p>我們已收到您的訂單，將於 1–2 個工作日內與您確認細節。</p>
+        <p style="margin-top:12px;font-size:.88rem;color:var(--fg2)">您的支持，讓三芝水蛇田的友善耕作得以延續。</p>
+        <button style="margin-top:28px;padding:10px 28px;border-radius:999px;border:1.5px solid var(--accent);background:none;color:var(--accent);font-size:.95rem;cursor:pointer;font-family:inherit;" onclick="resetOrder()">再次訂購</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 聯絡我們 -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">聯絡我們</span>
+      <h2 class="serif">有任何問題，歡迎聯繫</h2>
+      <p>環境教育合作、媒體採訪，或其他想聊的事</p>
+    </div>
+    <div class="contact-card fade-in">
+      <div class="form-group">
+        <label for="c-name">姓名<span class="req">*</span></label>
+        <input class="form-control" type="text" id="c-name" placeholder="您的姓名">
+      </div>
+      <div class="form-group">
+        <label for="c-contact">聯絡方式<span class="req">*</span></label>
+        <input class="form-control" type="text" id="c-contact" placeholder="電話或 Email">
+      </div>
+      <div class="form-group">
+        <label for="c-message">內容<span class="req">*</span></label>
+        <textarea class="form-control" id="c-message" rows="4" placeholder="請輸入您的問題或想法"></textarea>
+      </div>
+      <button class="contact-form-submit" onclick="submitContact()">送出</button>
+      <p class="form-footer" style="margin-top:14px">我們通常會在 2–3 個工作日內回覆</p>
+
+      <div style="margin-top:28px; padding-top:24px; border-top:1px solid var(--border);">
+        <p style="font-size:.8rem;font-weight:600;letter-spacing:.08em;color:var(--fg2);text-transform:uppercase;margin-bottom:14px;">直接聯繫</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--fg);">
+            <span style="font-size:1.1rem">📞</span>
+            <div>
+              <div style="font-weight:600;font-size:.82rem;color:var(--fg2);">新南田董米・雅淇</div>
+              <a href="tel:0390554928" style="color:var(--fg);">03-9054928</a>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--fg);">
+            <span style="font-size:1.1rem">✉️</span>
+            <span style="color:var(--fg);user-select:all;">tendongrice@gmail.com</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--fg);">
+            <span style="font-size:1.1rem">💬</span>
+            <span>LINE（訂購專用）：<a href="https://line.me/R/ti/p/%40viw8495l" target="_blank" rel="noopener" style="font-weight:600;color:var(--accent);">@viw8495l</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div>
+    <strong>三芝水蛇田</strong><br>
+    新北市三芝區・百年石砌水梯田・唐水蛇棲地保育<br>
+    友善農產合作：<a href="https://www.tiandongrice.com.tw" target="_blank" rel="noopener">新南田董米</a>
+  </div>
+  <div style="margin-top:12px;font-size:.75rem;opacity:.6">
+    © 三芝水蛇田 · 保護棲地，從購買開始
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── 狀態 ── */
+let qty_bamboo = 1;
+let qty_rice = 0;
+let selectedShipping = null;
+let selectedPickup = null;
+
+const BAMBOO_PRICE = 170;          // 茭白筍 每包
+const BAMBOO_BULK = 160;           // 茭白筍 3包以上
+const BAMBOO_BULK_THRESHOLD = 3;
+const RICE_NORMAL = 290;           // 水蛇米 每包（固定價）
+const SHIP_COST = { 'cold-s': 200, 'cold-m': 250, 'cold-f': 0 };
+
+/* ── 工具 ── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('visible');
+  setTimeout(() => t.classList.remove('visible'), 2800);
+}
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ── Q&A 展開 ── */
+function toggleQA(btn) {
+  const item = btn.closest('.qa-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.qa-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── 訂購：數量 ── */
+function changeBambooQty(delta) {
+  qty_bamboo = Math.max(1, Math.min(99, qty_bamboo + delta));
+  document.getElementById('bamboo-qty-display').textContent = qty_bamboo;
+  updatePriceSummary();
+}
+function changeRiceQty(delta) {
+  qty_rice = Math.max(0, Math.min(99, qty_rice + delta));
+  document.getElementById('rice-qty-display').textContent = qty_rice;
+  updatePriceSummary();
+}
+
+/* ── 訂購：配送方式 ── */
+function selectShipping(val) {
+  selectedShipping = val;
+  document.querySelectorAll('.shipping-option').forEach(o => o.classList.remove('selected'));
+  document.getElementById('ship-' + val).classList.add('selected');
+  const isCold = val.startsWith('cold');
+  document.getElementById('address-group').style.display = isCold ? 'block' : 'none';
+  updatePriceSummary();
+}
+
+/* ── 運費計算 ── */
+function calcShipping() {
+  if (!selectedShipping) return null;
+  if (selectedShipping.startsWith('pickup')) return 0;
+  return SHIP_COST[selectedShipping] ?? null;
+}
+
+/* ── 金額摘要 ── */
+function updatePriceSummary() {
+  const fmtNTD = n => `NT$${n.toLocaleString()}`;
+
+  // 茭白筍
+  const bambooUnit = qty_bamboo >= BAMBOO_BULK_THRESHOLD ? BAMBOO_BULK : BAMBOO_PRICE;
+  const bambooSub = qty_bamboo * bambooUnit;
+  document.getElementById('sum-bamboo').textContent = fmtNTD(bambooSub);
+  document.getElementById('sum-bamboo-qty-label').textContent = `× ${qty_bamboo}`;
+
+  // 茭白筍多包優惠
+  const bambooDiscountRow = document.getElementById('sum-discount-row');
+  const bambooDiscount = qty_bamboo >= BAMBOO_BULK_THRESHOLD ? (BAMBOO_PRICE - BAMBOO_BULK) * qty_bamboo : 0;
+  if (bambooDiscount > 0) {
+    bambooDiscountRow.style.display = 'flex';
+    document.getElementById('sum-discount-label').textContent = '茭白筍多包優惠（3 包以上 NT$160）';
+    document.getElementById('sum-discount').textContent = `－${fmtNTD(bambooDiscount)}`;
+  } else {
+    bambooDiscountRow.style.display = 'none';
+  }
+
+  // 水蛇米（固定價，無折扣）
+  const riceRow = document.getElementById('sum-rice-row');
+  let riceSub = 0;
+  if (qty_rice > 0) {
+    riceSub = qty_rice * RICE_NORMAL;
+    riceRow.style.display = 'flex';
+    document.getElementById('sum-rice').textContent = fmtNTD(riceSub);
+    document.getElementById('sum-rice-qty-label').textContent = `× ${qty_rice}`;
+  } else {
+    riceRow.style.display = 'none';
+  }
+
+  const shipping = calcShipping();
+  const shipEl = document.getElementById('sum-shipping');
+  const productTotal = bambooSub + riceSub;
+  document.getElementById('sum-product').textContent = fmtNTD(productTotal);
+
+  if (shipping === null) {
+    shipEl.textContent = '—（請選擇配送方式）';
+    document.getElementById('sum-total').textContent = '—';
+  } else {
+    shipEl.textContent = shipping === 0 ? '免運費' : fmtNTD(shipping);
+    document.getElementById('sum-total').textContent = fmtNTD(productTotal + shipping);
+  }
+  updateShippingNote();
+}
+
+/* ── 配送提示：依合計包數提示正確方案 ── */
+function updateShippingNote() {
+  const total = qty_bamboo + qty_rice;
+  const hint = document.getElementById('shipping-tier-hint');
+  if (!hint) return;
+  let msg = '';
+  if (total >= 1 && total <= 10) msg = `💡 合計 ${total} 包 → 建議選「冷藏宅配・1–10 包」`;
+  else if (total >= 11 && total <= 19) msg = `💡 合計 ${total} 包 → 建議選「冷藏宅配・11–19 包」`;
+  else if (total >= 20) msg = `💡 合計 ${total} 包 → 建議選「冷藏宅配・20 包以上（免運費）」`;
+  if (msg && selectedShipping && selectedShipping.startsWith('pickup')) msg = '';
+  hint.textContent = msg;
+  hint.style.display = msg ? 'block' : 'none';
+}
+
+/* ── 表單驗證與送出 ── */
+function submitOrder() {
+  if (!selectedShipping) { showToast('請選擇配送方式'); return; }
+
+  const name = document.getElementById('buyer-name').value.trim();
+  const phone = document.getElementById('buyer-phone').value.trim();
+  const email = document.getElementById('buyer-email').value.trim();
+  const isCold = selectedShipping.startsWith('cold');
+  const address = isCold ? document.getElementById('buyer-address').value.trim() : '';
+  const transfer = document.getElementById('buyer-transfer').value.trim();
+  const note = document.getElementById('buyer-note').value.trim();
+
+  if (!name) { showToast('請填寫姓名'); return; }
+  if (!phone) { showToast('請填寫聯絡電話'); return; }
+  if (!email) { showToast('請填寫電子信箱'); return; }
+  if (isCold && !address) { showToast('請填寫收件地址'); return; }
+  if (!transfer) { showToast('請填寫匯款後五碼'); return; }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = '送出中…';
+
+  const bambooUnit = qty_bamboo >= BAMBOO_BULK_THRESHOLD ? BAMBOO_BULK : BAMBOO_PRICE;
+  const shipping = calcShipping();
+  const bambooSub = qty_bamboo * bambooUnit;
+  const riceSub = qty_rice * RICE_NORMAL;
+  const total = bambooSub + riceSub + shipping;
+
+  const shippingLabels = {
+    'cold-s': '冷藏宅配 1–10 包（NT$200）',
+    'cold-m': '冷藏宅配 11–19 包（NT$250）',
+    'cold-f': '冷藏宅配 20 包以上（免運）',
+    'pickup-milun': '定點面交・迴龍捷運站',
+    'pickup-banciao': '定點面交・板橋四川蝦皮智取店',
+    'pickup-yatung': '定點面交・亞東醫院捷運站',
+    'pickup-yilan': '定點面交・宜蘭官老爺休閒農場',
+  };
+  const shippingLabel = shippingLabels[selectedShipping] || selectedShipping;
+
+  const SCRIPT_URL = ''; // ← 填入你的 Google Apps Script URL
+
+  const payload = {
+    timestamp: new Date().toLocaleString('zh-TW'),
+    bamboo_qty: qty_bamboo,
+    bamboo_price: bambooUnit,
+    bamboo_sub: bambooSub,
+    rice_qty: qty_rice,
+    rice_unit_price: RICE_NORMAL,
+    rice_sub: riceSub,
+    shipping: shippingLabel,
+    total,
+    name, phone, email, address, transfer, note
+  };
+
+  if (SCRIPT_URL) {
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(() => showSuccess()).catch(() => showSuccess());
+  } else {
+    setTimeout(showSuccess, 600);
+  }
+}
+
+function showSuccess() {
+  document.getElementById('order-form-wrap').style.display = 'none';
+  document.getElementById('order-success').classList.add('visible');
+}
+
+function resetOrder() {
+  document.getElementById('order-form-wrap').style.display = 'block';
+  document.getElementById('order-success').classList.remove('visible');
+  // 重置表單
+  qty_bamboo = 1; qty_rice = 0;
+  selectedShipping = null; selectedPickup = null;
+  document.getElementById('bamboo-qty-display').textContent = '1';
+  document.getElementById('rice-qty-display').textContent = '0';
+  document.querySelectorAll('.shipping-option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.pickup-option').forEach(o => o.classList.remove('selected'));
+  document.getElementById('pickup-locations').classList.remove('visible');
+  document.getElementById('address-group').style.display = 'none';
+  document.getElementById('sum-bamboo').textContent = '—';
+  document.getElementById('sum-rice-row').style.display = 'none';
+  document.getElementById('sum-discount-row').style.display = 'none';
+  document.getElementById('sum-shipping').textContent = '—';
+  document.getElementById('sum-total').textContent = '—';
+  ['buyer-name','buyer-phone','buyer-email','buyer-address','buyer-note'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  document.getElementById('submit-btn').disabled = false;
+  document.getElementById('submit-btn').textContent = '確認送出訂單';
+}
+
+/* ── 聯絡表單 ── */
+function submitContact() {
+  const name = document.getElementById('c-name').value.trim();
+  const contact = document.getElementById('c-contact').value.trim();
+  const msg = document.getElementById('c-message').value.trim();
+  if (!name || !contact || !msg) { showToast('請填寫所有必填欄位'); return; }
+  const subject = encodeURIComponent('【三芝水蛇田】來自網站的訊息');
+  const body = encodeURIComponent(`姓名：${name}\n聯絡方式：${contact}\n\n${msg}`);
+  window.location.href = `mailto:tendongrice@gmail.com?subject=${subject}&body=${body}`;
+  showToast('即將開啟郵件程式，感謝您的來信！');
+}
+
+/* ── 滾動動畫 ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+/* 初始化金額 */
+updatePriceSummary();
+
+/* ── 相片集：篩選 + 燈箱 ── */
+(function() {
+  // 篩選按鈕
+  const filterBtns = document.querySelectorAll('.gf-btn');
+  const items = document.querySelectorAll('.gitem');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      items.forEach(item => {
+        item.classList.toggle('hidden', cat !== 'all' && item.dataset.cat !== cat);
+      });
+    });
+  });
+
+  // 燈箱
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+  let visibleItems = [], currentIdx = 0;
+
+  function getVisible() {
+    return Array.from(items).filter(i => !i.classList.contains('hidden'));
+  }
+  function openLightbox(idx) {
+    visibleItems = getVisible();
+    currentIdx = idx;
+    const it = visibleItems[currentIdx];
+    lbImg.src = it.querySelector('img').src;
+    lbImg.alt = it.querySelector('img').alt;
+    lbCap.textContent = it.querySelector('.gcap').textContent;
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+  }
+  function navigate(dir) {
+    visibleItems = getVisible();
+    currentIdx = (currentIdx + dir + visibleItems.length) % visibleItems.length;
+    const it = visibleItems[currentIdx];
+    lbImg.src = it.querySelector('img').src;
+    lbImg.alt = it.querySelector('img').alt;
+    lbCap.textContent = it.querySelector('.gcap').textContent;
+  }
+
+  items.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      const vis = getVisible();
+      openLightbox(vis.indexOf(item));
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', () => navigate(-1));
+  document.getElementById('lbNext').addEventListener('click', () => navigate(1));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (lightbox.hidden) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+  });
+})();
+</script>
+</body>
+</html>
+
+</body></html>
