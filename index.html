@@ -522,62 +522,71 @@ nav {
 
 /* ── 相片集 ── */
 .gallery-section { background: var(--bg2); }
-.gallery-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-.gf-btn {
-  padding: 6px 16px; border-radius: 99px; border: 1.5px solid var(--border);
-  background: var(--surface); color: var(--fg2); font-size: .85rem; cursor: pointer;
-  transition: background .2s, color .2s, border-color .2s;
-}
-.gf-btn:hover { border-color: var(--accent); color: var(--accent); }
-.gf-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 .gitem {
-  position: relative; border-radius: 10px; overflow: hidden;
-  aspect-ratio: 4/3; cursor: pointer; background: var(--bg2);
-  box-shadow: var(--shadow);
+  position: relative; border-radius: 8px; overflow: hidden;
+  aspect-ratio: 4/3; cursor: pointer; background: var(--border);
 }
 .gitem img {
   width: 100%; height: 100%; object-fit: cover;
-  transition: transform .4s; display: block;
+  transition: transform .45s ease; display: block;
 }
-.gitem:hover img { transform: scale(1.06); }
-.gcap {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 6px 10px; background: rgba(0,0,0,.52); color: #fff;
-  font-size: .78rem; text-align: center;
-  opacity: 0; transition: opacity .25s;
+.gitem::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0); transition: background .3s;
 }
-.gitem:hover .gcap { opacity: 1; }
+.gitem:hover::after { background: rgba(0,0,0,.18); }
+.gitem:hover img { transform: scale(1.07); }
+.gcap { display: none; }
 .gitem.hidden { display: none; }
 
 /* ── 燈箱 ── */
 .lightbox {
   position: fixed; inset: 0; z-index: 2000;
-  background: rgba(0,0,0,.88);
+  background: rgba(0,0,0,.95);
   display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 12px;
 }
 .lightbox[hidden] { display: none !important; }
-.lb-img { max-width: 90vw; max-height: 80vh; border-radius: 8px; object-fit: contain; }
-.lb-cap { color: #e8e3d8; font-size: .9rem; margin: 0; }
-.lb-close, .lb-prev, .lb-next {
-  position: fixed; background: rgba(255,255,255,.15); border: none;
-  color: #fff; font-size: 1.6rem; cursor: pointer; border-radius: 50%;
-  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-  transition: background .2s;
+.lb-img {
+  max-width: 92vw; max-height: 88vh;
+  object-fit: contain; display: block;
+  border-radius: 4px;
+  box-shadow: 0 8px 48px rgba(0,0,0,.6);
 }
-.lb-close:hover, .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,.3); }
-.lb-close { top: 20px; right: 20px; font-size: 1.2rem; }
-.lb-prev  { left: 16px;  top: 50%; transform: translateY(-50%); }
-.lb-next  { right: 16px; top: 50%; transform: translateY(-50%); }
+.lb-cap { display: none; }
+.lb-close {
+  position: fixed; top: 18px; right: 22px;
+  background: none; border: none; color: rgba(255,255,255,.7);
+  font-size: 2rem; cursor: pointer; line-height: 1;
+  transition: color .2s; padding: 4px 8px;
+}
+.lb-close:hover { color: #fff; }
+.lb-prev, .lb-next {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  background: none; border: none; color: rgba(255,255,255,.6);
+  font-size: 3.5rem; cursor: pointer; padding: 0 18px;
+  transition: color .2s; line-height: 1; font-weight: 200;
+  user-select: none;
+}
+.lb-prev:hover, .lb-next:hover { color: #fff; }
+.lb-prev { left: 0; }
+.lb-next { right: 0; }
+
+/* 燈箱圖片計數器 */
+.lb-counter {
+  position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,.5); font-size: .82rem; letter-spacing: .06em;
+  pointer-events: none;
+}
+
 @media (max-width: 480px) {
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .lb-prev { left: 6px; }
-  .lb-next { right: 6px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .lb-prev { left: 0; padding: 0 10px; font-size: 2.8rem; }
+  .lb-next { right: 0; padding: 0 10px; font-size: 2.8rem; }
 }
 </style>
 </head>
@@ -760,14 +769,6 @@ nav {
       <h2 class="serif">照片集</h2>
     </div>
 
-    <!-- 分類篩選 -->
-    <div class="gf-bar fade-in" id="gfBar">
-      <button class="gf-btn active" data-cat="all" onclick="filterGallery('all')">全部</button>
-      <button class="gf-btn" data-cat="paddy" onclick="filterGallery('paddy')">稻田</button>
-      <button class="gf-btn" data-cat="animal" onclick="filterGallery('animal')">生態</button>
-      <button class="gf-btn" data-cat="product" onclick="filterGallery('product')">農產品</button>
-    </div>
-
     <div class="gallery-grid fade-in" id="galleryGrid">
       <!-- 稻田 -->
       <div class="gitem" data-cat="paddy"><img src="paddy.JPG" alt="" loading="lazy"><span class="gcap"></span></div>
@@ -790,7 +791,7 @@ nav {
     <button class="lb-prev" id="lbPrev" aria-label="上一張">‹</button>
     <button class="lb-next" id="lbNext" aria-label="下一張">›</button>
     <img class="lb-img" id="lbImg" src="" alt="">
-    <p class="lb-cap" id="lbCap" style="display:none"></p>
+    <div class="lb-counter" id="lbCounter"></div>
   </div>
 </section>
 
@@ -1581,19 +1582,20 @@ updatePriceSummary();
   // 燈箱
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
-  const lbCap = document.getElementById('lbCap');
+  const lbCounter = document.getElementById('lbCounter');
   let visibleItems = [], currentIdx = 0;
 
   function getVisible() {
     return Array.from(items).filter(i => !i.classList.contains('hidden'));
   }
+  function updateCounter() {
+    lbCounter.textContent = (currentIdx + 1) + ' / ' + visibleItems.length;
+  }
   function openLightbox(idx) {
     visibleItems = getVisible();
     currentIdx = idx;
-    const it = visibleItems[currentIdx];
-    lbImg.src = it.querySelector('img').src;
-    lbImg.alt = it.querySelector('img').alt;
-    lbCap.textContent = it.querySelector('.gcap').textContent;
+    lbImg.src = visibleItems[currentIdx].querySelector('img').src;
+    updateCounter();
     lightbox.hidden = false;
     document.body.style.overflow = 'hidden';
   }
@@ -1604,10 +1606,8 @@ updatePriceSummary();
   function navigate(dir) {
     visibleItems = getVisible();
     currentIdx = (currentIdx + dir + visibleItems.length) % visibleItems.length;
-    const it = visibleItems[currentIdx];
-    lbImg.src = it.querySelector('img').src;
-    lbImg.alt = it.querySelector('img').alt;
-    lbCap.textContent = it.querySelector('.gcap').textContent;
+    lbImg.src = visibleItems[currentIdx].querySelector('img').src;
+    updateCounter();
   }
 
   items.forEach((item, i) => {
