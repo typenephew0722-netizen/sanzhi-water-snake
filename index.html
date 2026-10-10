@@ -1202,6 +1202,7 @@ nav {
       </div>
       <button class="contact-form-submit" onclick="submitContact()">送出</button>
       <p class="form-footer" style="margin-top:14px">我們通常會在 2–3 個工作日內回覆</p>
+      <p class="form-footer" style="margin-top:6px">若無法自動開啟郵件程式，煩請主動用以下方式與我們聯繫。</p>
 
       <div style="margin-top:28px; padding-top:24px; border-top:1px solid var(--border);">
         <p style="font-size:.8rem;font-weight:600;letter-spacing:.08em;color:var(--fg2);text-transform:uppercase;margin-bottom:14px;">直接聯繫</p>
@@ -1425,7 +1426,7 @@ function submitOrder() {
     fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(payload)
     }).then(() => showSuccess()).catch(() => showSuccess());
   } else {
