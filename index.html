@@ -350,6 +350,14 @@ select.form-control { cursor: pointer; }
 .ship-cat-btn.active { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
 .ship-subopts { margin-top: 4px; }
 
+/* NEW 標籤 */
+.badge-new {
+  display: inline-block; font-size: .65rem; font-weight: 700;
+  background: var(--warm); color: #fff;
+  padding: 1px 6px; border-radius: 4px; letter-spacing: .04em;
+  vertical-align: middle; margin-left: 4px;
+}
+
 /* 同購買人按鈕 */
 .same-buyer-btn {
   font-size: .78rem; padding: 3px 10px; border-radius: 999px;
@@ -1112,6 +1120,22 @@ nav {
                 <span>免運費</span>
               </div>
             </label>
+            <label class="shipping-option" id="ship-pickup-bird-expo" onclick="selectShipping('pickup-bird-expo')">
+              <input type="radio" name="shipping" value="pickup-bird-expo">
+              <div class="ship-radio-dot"></div>
+              <div class="ship-info">
+                <strong>臺北國際賞鳥博覽會 <span class="badge-new">NEW</span></strong>
+                <span>10/18，人禾基金會攤位，免運費</span>
+              </div>
+            </label>
+            <label class="shipping-option" id="ship-pickup-daan" onclick="selectShipping('pickup-daan')">
+              <input type="radio" name="shipping" value="pickup-daan">
+              <div class="ship-radio-dot"></div>
+              <div class="ship-info">
+                <strong>大安森林公園生態博覽會 <span class="badge-new">NEW</span></strong>
+                <span>11/7，人禾基金會攤位，免運費</span>
+              </div>
+            </label>
           </div>
         </div>
 
@@ -1477,6 +1501,8 @@ function submitOrder() {
     'pickup-banciao': '定點面交・板橋四川蝦皮智取店',
     'pickup-yatung': '定點面交・亞東醫院捷運站',
     'pickup-yilan': '定點面交・宜蘭官老爺休閒農場',
+    'pickup-bird-expo': '定點面交・臺北國際賞鳥博覽會（10/18 人禾基金會攤位）',
+    'pickup-daan': '定點面交・大安森林公園生態博覽會（11/7 人禾基金會攤位）',
   };
   const shippingLabel = shippingLabels[selectedShipping] || selectedShipping;
 
